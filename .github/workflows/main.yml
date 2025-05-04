@@ -21,13 +21,13 @@ jobs:
 
       - name: Verify Python syntax
         run: |
-          python -c "import ast; ast.parse(open('test.py').read())" || exit 1
+          python -c "import ast; ast.parse(open('app.py').read())" || exit 1
           echo "Python syntax OK"
 
       - name: Run static analysis (flake8)
         run: |
           pip install flake8
-          flake8 test.py --count --select=E9,F63,F7,F82 --show-source --statistics || exit 1
+          flake8 app.py --count --select=E9,F63,F7,F82 --show-source --statistics || exit 1
           echo "Static analysis passed"
 
   docker-build:
